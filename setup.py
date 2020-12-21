@@ -24,7 +24,7 @@ BUILD_DSDP = 1
 
 # Directory containing libraries for DSDP (used only when BUILD_DSDP = 1).
 DSDP_LIB_DIR = '/usr/lib'
- 
+
 # Directory containing dsdp5.h (used only when BUILD_DSDP = 1).
 DSDP_INC_DIR = 'dsdp/C/allinclude'
 
@@ -46,20 +46,21 @@ extmods = []
 # extension modules
 
 if BUILD_DSDP:
-    pydsdp5 = Extension('pydsdp5', libraries = LAPACK_LIB + BLAS_LIB,
-        include_dirs = [ 'dsdp/C/allinclude' ],
-        library_dirs = [ BLAS_LIB_DIR, LAPACK_LIB_DIR, DSDP_LIB_DIR ],
-        extra_link_args = BLAS_EXTRA_LINK_ARGS,
+    pydsdp5 = Extension('pydsdp5',
+    # libraries = LAPACK_LIB + BLAS_LIB,
+    # include_dirs = [ 'dsdp/C/allinclude' ],
+    # library_dirs = [ BLAS_LIB_DIR, LAPACK_LIB_DIR, DSDP_LIB_DIR ],
+    # extra_link_args = BLAS_EXTRA_LINK_ARGS,
         sources = ['dsdp/C/pyreadsdpa.c'] + glob('dsdp/C/allc/*.c') )
-    extmods += [pydsdp5];
+    extmods += [pydsdp5]
 
 # Setup
 
-setup (name = 'scikit-dsdp', 
+setup (name = 'scikit-dsdp',
     description = 'Python interface to DSDP semidefinite programming library',
-    version = '0.0.1', 
+    version = '0.0.1',
     long_description = '''
-Python interface to DSDP semidefinite programming library.''', 
+Python interface to DSDP semidefinite programming library.''',
     author = 'Zhisu Zhu, and Yinyu Ye',
     author_email = 'zhuzhisu@alumni.stanford.edu, yyye@stanford.edu',
     url = 'http://www.mcs.anl.gov/hs/software/DSDP/',
