@@ -48,7 +48,7 @@ extmods = []
 if BUILD_DSDP:
     pydsdp5 = Extension('pydsdp5',
     # libraries = LAPACK_LIB + BLAS_LIB,
-    # include_dirs = [ 'dsdp/C/allinclude' ],
+        include_dirs = [ 'dsdp/C/allinclude' ],
     # library_dirs = [ BLAS_LIB_DIR, LAPACK_LIB_DIR, DSDP_LIB_DIR ],
     # extra_link_args = BLAS_EXTRA_LINK_ARGS,
         sources = ['dsdp/C/pyreadsdpa.c'] + glob('dsdp/C/allc/*.c') )
